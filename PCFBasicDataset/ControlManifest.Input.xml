@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="SuperPowerLabs" constructor="PCFBasicDataset" version="0.0.1" display-name-key="PCFBasicDataset" description-key="PCFBasicDataset description" control-type="standard" >
-    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
-    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
-    Example1:
-      <external-service-usage enabled="true">
-        <domain>www.Microsoft.com</domain>
-      </external-service-usage>
-    Example2:
-      <external-service-usage enabled="false">
-      </external-service-usage>
+  <control  namespace="SuperPowerLabs" 
+            constructor="PCFBasicDataset" 
+            version="0.0.1" 
+            display-name-key="PCFBasicDataset" 
+            description-key="PCFBasicDataset description" 
+            control-type="standard" >
+    <!--
+        external-service-usage node declares whether this 3rd party PCF control 
+        is using external service or not, if yes, this control will be considered 
+        as premium and please also add the external domain it is using.
+        If it is not using any external service, please set the enabled="false" 
+        and DO NOT add any domain below. The "enabled" will be false by default.
+      Example1:
+        <external-service-usage enabled="true">
+          <domain>www.Microsoft.com</domain>
+        </external-service-usage>
+      Example2:
+        <external-service-usage enabled="false">
+        </external-service-usage>
     -->
     <external-service-usage enabled="false">
       <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
@@ -17,11 +26,31 @@
       <domain></domain>
       -->
     </external-service-usage>
+    <!-- ==================================================================================== -->
     <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
+    <!-- ==================================================================================== -->
     <data-set name="sampleDataSet" display-name-key="Dataset_Display_Key">
       <!-- 'property-set' node represents a unique, configurable property that each record in the dataset must provide. -->
       <!-- UNCOMMENT TO ADD PROPERTY-SET NODE
-      <property-set name="samplePropertySet" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+        <property-set   name="samplePropertySet" 
+                        display-name-key="Property_Display_Key" 
+                        description-key="Property_Desc_Key" 
+                        of-type="SingleLine.Text" 
+                        usage="bound" required="true" />
+
+            name: This is a critical attribute. It's how you will refer to the dataset in your index.ts code (e.g., context.parameters.sampleDataSet).
+            display-name-key: How this data input slot appears in Power Apps Studio.
+            cds-data-set-options: Allows you to control if the Power Apps built-in command bar, view selector, or search box for grids should be shown. For a truly custom component, you'll often set these to false.
+
+        <property name="SampleProperty" 
+                  display-name-key="Sample Property" 
+                  description-key="A sample text property." 
+                  of-type="SingleLine.Text" 
+                  usage="bound" 
+                  required="false" />
+
+            of-type: Data type. Correlates to Power Fx types (Text, Whole.None, Decimal, DateAndTime.DateOnly, TwoOptions, etc.).
+            usage: "bound" (linked to a data field), "input" (static value set in Studio).
       -->
     </data-set>
     <resources>
